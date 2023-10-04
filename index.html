@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Website Icon" type="png" href="images/logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+    <title>Home</title>
+</head>
+<script>
+    // JavaScript for Carousel
+    document.addEventListener("DOMContentLoaded", function () {
+        const gallery = document.querySelector(".carouselGallery");
+        const prevButton = document.querySelector(".prevButton");
+        const nextButton = document.querySelector(".nextButton");
+        const numImages = gallery.children.length;
+        const imagesPerSlide = 2;
+        let currentIndex = 0;
+        function showImage(index) {
+            gallery.style.transform = `translateX(-${(index * imagesPerSlide) * (100 / numImages)}%)`;
+        }
+        nextButton.addEventListener("click", function () {
+            currentIndex = (currentIndex + imagesPerSlide) % (numImages / imagesPerSlide);
+            showImage(currentIndex);
+        });
+        prevButton.addEventListener("click", function () {
+            currentIndex = (currentIndex - imagesPerSlide + (numImages / imagesPerSlide)) % (numImages / imagesPerSlide);
+            showImage(currentIndex);
+        });
+        showImage(currentIndex);
+    });
+    //JavaScript for Accordion
+    document.addEventListener("DOMContentLoaded", function () {
+        const accordionButtons = document.querySelectorAll(".accordionButton");
+
+        accordionButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                const accordionItem = this.parentElement;
+                const accordionContent = accordionItem.querySelector(".accordionContent");
+                const isOpen = accordionItem.classList.contains("opened");
+                // Close all accordion items first
+                const allAccordionItems = document.querySelectorAll(".accordionItem");
+                allAccordionItems.forEach((item) => {
+                    item.classList.remove("opened");
+                    item.querySelector(".accordionContent").style.display = "none";
+                });
+                // Then open or close the clicked accordion
+                if (!isOpen) {
+                    accordionItem.classList.add("opened");
+                    accordionContent.style.display = "block";
+                }
+            });
+        });
+    });
+</script>
+<body>
+    <section id="home">
+        <header>
+            <a href="#home"><img src="images/logo.jpg" alt="logo" class="logo"></a>
+            <nav class="homeNav">
+                <ul>
+                    <li><a href="#historyButton">01. History</a></li>
+                    <li><a href="#climbButton">02. Climb</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="homeText">
+            <h1>LOSANGELES</h1>
+            <h2>MOUNTAINS</h2>
+        </div>
+    </section>
+    <!-- ACCORDION BUTTONS -->
+    <div class="accordion">
+        <div class="accordionItem">
+            <!-- HISTORY BUTTON -->
+            <button id="historyButton" class="accordionButton">HISTORY</button>
+            <div class="accordionContent">
+                <section id="history">
+                    <main class="historyText">
+                        <h3>01.</h3>
+                        <h4>HISTORY</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia adipisci laboriosam consequuntur 
+                            ipsam quisquam nihil esse minus velit repellendus temporibus nam doloribus, quia maxime repudiandae 
+                            atque qui dicta sit sequi! Totam veritatis ipsa autem at? Reprehenderit explicabo blanditiis ipsum 
+                            laboriosam dignissimos quisquam labore alias, inventore exercitationem voluptatibus veritatis odit iure ducimus possimus tenetur nihil esse quas voluptates dolores! Voluptas, ratione?
+                        </p>
+                    </main>
+                    <div class="carousel">
+                        <div class="carouselGallery">
+                            <img src="images/carousel (3).jpg" alt="">
+                            <img src="images/carousel (1).jpg" alt="">
+                            <img src="images/carousel (2).jpg" alt="">
+                            <img src="images/carousel (4).jpg" alt="">
+                            <img src="images/carousel (3).jpg" alt="">
+                            <img src="images/carousel (1).jpg" alt="">
+                            <img src="images/carousel (2).jpg" alt="">
+                            <img src="images/carousel (4).jpg" alt="">
+                        </div>
+                        <div class="carouselControls">
+                            <button class="prevButton">&#10094;</button>
+                            <button class="nextButton">&#10095;</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="accordionItem">
+            <!-- CLIMB BUTTON -->
+            <button id="climbButton" class="accordionButton">CLIMB</button>
+            <div class="accordionContent">
+                <section id="climb">
+                    <head class="climbHeader">
+                        <main class="climbText">
+                            <h3>02.</h3>
+                            <h4>CLIMB</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia adipisci laboriosam consequuntur 
+                                ipsam quisquam nihil esse minus velit repellendus temporibus nam doloribus, quia maxime repudiandae 
+                                atque qui dicta sit sequi! Totam veritatis ipsa autem at? Reprehenderit explicabo blanditiis ipsum 
+                                laboriosam dignissimos quisquam labore alias, inventore exercitationem voluptatibus veritatis odit iure ducimus possimus tenetur nihil esse quas voluptates dolores! Voluptas, ratione?
+                            </p>
+                        </main>
+                    </head>
+                    <div class="schedule">
+                        <div class="scheduleList">
+                            <h5>SCHEDULE</h5>
+                            <article class="scheduleMenu">
+                                <p class="date">25 NOV 2016</p><p class="name">Lorem ipsum dolor </p>
+                            </article>
+                            <article class="scheduleMenu">
+                                <p class="date">25 NOV 2016</p><p class="name">Lorem ipsum dolor </p>
+                            </article>
+                            <article class="scheduleMenu">
+                                <p class="date">25 NOV 2016</p><p class="name">Lorem ipsum dolor </p>
+                            </article>
+                            <article class="scheduleMenu">
+                                <p class="date">25 NOV 2016</p><p class="name">Lorem ipsum dolor </p>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <img src="Images/logo.jpg" alt="logo" class="logo">
+        <nav class="historyNav">
+            <span class="footerText">
+                <h1>LOSANGELES</h1>
+                <h2>MOUNTAINS</h2>
+            </span>
+            <p>COPYRIGHT 2016. ALL RIGHTS RESERVED</p>
+        </nav>
+    </footer>
+</body>
+</html>
